@@ -12,3 +12,8 @@ Outra mudança foi retirar o pthread_cond_broadcast nas funções printAteJose e
 simplesmente não tem finalidade alguma, já que não há mais nenhuma thread que dependa da variável
 estado neste ponto do código a partir do momento em que a função printSenta incrementa e libera
 as threads que executam printAteMaria e printAteJose.
+
+Além disso, mudei a ordem das instruções pthread_cond_broadcast e pthread_mutex_unlock. Na primeira
+versão, primeiramente se executava o unlock e depois o broadcast e na nova versão foi feita uma 
+inversão dessa ordem. Não testei para ver qual tipo de erro a primeira versão geraria, mas como 
+x_cond é uma variável global e compartilhada entre as threads, imagino que poderia gerar algum erro.
