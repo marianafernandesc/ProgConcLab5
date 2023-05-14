@@ -123,6 +123,5 @@ int main(void) {
   pthread_cond_destroy(&cond_ate);
   pthread_cond_destroy(&cond_senta);
 
-  pthread_exit(NULL);
   return 1;
 }
