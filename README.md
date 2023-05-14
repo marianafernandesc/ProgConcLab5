@@ -18,10 +18,11 @@ versão, primeiramente se executava o unlock e depois o broadcast e na nova vers
 inversão dessa ordem. Não testei para ver qual tipo de erro a primeira versão geraria, mas como 
 x_cond é uma variável global e compartilhada entre as threads, imagino que poderia gerar algum erro.
 
-Na versão 3 (Lab5-v3.c), adicionei a função join na main, para fazer a main esperar as threads
-executarem, além de usar pthread_mutex_destroy e pthread_cond_destroy para destruir as variáveis
-de lock e condição. O tid, que eu percebi que usei com 0 em todas as threads no pthread_create,
-foi consertado. Por fim, em vez de usar a variável estado, optei por usar duas variáveis de 
-condição, uma que avalia quando os prints "Oi Maria" e "Oi Jose" foram feitos, que são condição
-lógica para a função printSenta executar, e outra que avalia se o print "Sente-se por favor" foi 
-feito, que é condição lógica para as funções printAteMaria e printAteJose executarem.
+Na versão 3 (Lab5-v3.c), retirei o pthread_exit(NULL) no final e adicionei a função join na 
+main, para fazer a main esperar as threads executarem, além de usar pthread_mutex_destroy e 
+pthread_cond_destroy para destruir as variáveis de lock e condição. O tid, que eu percebi que 
+usei com 0 em todas as threads no pthread_create, foi consertado. Por fim, em vez de usar a 
+variável estado, optei por usar duas variáveis de condição, uma que avalia quando os prints 
+"Oi Maria" e "Oi Jose" foram feitos, que são condição lógica para a função printSenta executar, 
+e outra que avalia se o print "Sente-se por favor" foi feito, que é condição lógica para as 
+funções printAteMaria e printAteJose executarem.
